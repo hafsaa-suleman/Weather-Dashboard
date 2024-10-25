@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Data & Chat</title>
+    <link rel="stylesheet" href="table.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <h1>Weather App</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="index.html" class="nav-item">
+                    <i class="fas fa-th-large"></i>
+                    Dashboard
+                </a>
+                <a href="table.html" class="nav-item active">
+                    <i class="fas fa-table"></i>
+                    Tables
+                </a>
+            </nav>
+        </aside>
+
+        <div class="overlay" id="overlay">
+            <div class="error-box" id="errorBox">
+                <h2 class="error-title">Error</h2>
+                <p class="error-message"></p>
+                <button class="close-button">Close</button>
+            </div>
+        </div> 
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Bar -->
+            <div class="search-filter-user">
+                <div class="search-bar">
+                    <input type="text" id="citySearch" placeholder="Enter city name">
+                    <button id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-dropdown">
+                    <select class="filter" id="filterSelect">
+                        <option class="filter-item" value="" selected disabled>Filter</option>
+                        <option class="filter-item" value="ascending">Temperatures Ascending</option>
+                        <option class="filter-item" value="descending">Temperatures Descending</option>
+                        <option class="filter-item" value="rainy">Filter Rainy Days</option>
+                        <option class="filter-item" value="highest">Highest Temperature</option>
+                    </select>
+                </div>
+                <div class="user-logo">
+                    <div class="logo-letter">H</div>
+                </div>
+            </div>            
+
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+            </div>
+
+            <!-- Content Grid -->
+            <div class="content-grid">
+                <!-- Weather Table Section -->
+                <div class="table-section">
+                    <h2>5-Day Temperature Forecast</h2>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Time</th>
+                                    <th></th>
+                                    <th>Low</th>
+                                    <th></th>
+                                    <th>High</th>
+                                    <th>Weather</th>
+                                    <th>Humidity</th>
+                                    <th>Wind Speed</th>
+                                </tr>
+                            </thead>
+                            <tbody id="weatherTableBody">
+                                <!-- Rows will be populated here -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="pagination">
+                        <button class="page-btn" id="prevPage" disabled>
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="page-btn" id="nextPage" disabled>
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+
+                <!-- Chatbot Section -->
+                <div class="chat-section">
+                    <div class="chat-header">
+                        <h2>Weather Assistant</h2>
+                    </div>
+                    <div class="chat-messages" id="chatMessages">
+                        <div class="message bot">
+                            <i class="fas fa-robot"></i>
+                            <div class="message-content">
+                                Hello! I'm your weather assistant. How can I help you today?
+                            </div>
+                        </div>
+                        <!-- Messages will be added here -->
+                    </div>
+                    <div class="chat-input">
+                        <input type="text" id="userInput" placeholder="Type your question...">
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="table.js"></script>
+</body>
+</html>

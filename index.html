@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <i class="fas fa-cloud-sun"></i>
+                <h1>Weather App</h1>
+            </div>
+            <nav class="nav-menu">
+                <a href="dashboard.html" class="nav-item active">
+                    <i class="fas fa-th-large"></i>
+                    Dashboard
+                </a>
+                <a href="table.html" class="nav-item">
+                    <i class="fas fa-table"></i>
+                    Tables
+                </a>
+            </nav>
+        </aside>
+
+        <div class="overlay" id="overlay">
+            <div class="error-box" id="errorBox">
+                <h2 class="error-title">Error</h2>
+                <p class="error-message"></p>
+                <button class="close-button">Close</button>
+            </div>
+        </div>        
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Search Bar -->
+            <div class="search-filter-user">
+                <div class="search-bar">
+                    <input type="text" id="citySearch" placeholder="Enter city name">
+                    <button id="searchBtn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="user-logo">
+                    <div class="logo-letter">H</div>
+                </div>
+            </div>
+            
+            <!-- Loading Spinner -->
+            <div class="loading-spinner" id="loadingSpinner">
+                <div class="spinner"></div>
+            </div>
+            
+            <!-- Weather Widget -->
+            <div class="weather-widget">
+
+                <div class="left-side">
+                    <div class="video-container">
+                        <video autoplay muted loop id="weatherVideo">
+                            <source id="videoSource" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>                    
+                    <div class="toggle-container">
+                        <label class="switch">
+                            <input type="checkbox" id="unitToggle">
+                            <span class="slider"></span>
+                        </label>
+                        <span id="toggleLabel">°C</span>
+                    </div>
+                    <div class="weather-main">
+                        <h2 id="cityName">City </h2>
+                        <h3 id="temperature">0°C</h3>
+                        <p id="description">---</p>
+                        <p>High: <span id="highTemp">0°C</span> Low: <span id="lowTemp">0°C</span></p>
+                    </div>
+                    <div class="weather-icon">
+                        <img id="weatherIcon" alt="Weather Icon">
+                    </div>
+                </div>
+
+                <div class="right-side">
+                    <div class="info-box">
+                        <div class="heading">
+                            <img class="info-img" src="images/humidity-icon.png" alt="Humidity Icon">
+                            <h4>Humidity</h4>
+                        </div>
+                            <p id="humidity">0%</p>
+                            <p id="humidityStatus">Comfortable</p>
+                    </div>
+                    <div class="info-box">
+                        <div class="heading">
+                            <img class="info-img" src="images/wind-icon.png" alt="Wind Speed Icon">
+                            <h4>Wind Speed</h4>
+                        </div>
+                            <p id="windSpeed">0 m/s</p>
+                            <p id="windSpeedStatus">Calm</p>
+                    </div>
+                    <div class="info-box">
+                        <div class="heading">
+                            <img class="info-img" src="images/uv-index.png" alt="Wind Speed Icon">
+                            <h4>UV Index</h4>
+                        </div>
+                            <p id="uvIndex">0/10</p>
+                            <p id="uvStatus">Normal</p>
+                    </div>
+                    <div class="info-box">
+                        <div class="heading">
+                            <img class="info-img" src="images/barometer-icon.png" alt="Pressure Icon">
+                            <h4>Pressure</h4>
+                        </div>
+                            <p id="pressure">0 hPa</p>
+                            <p id="pressureStatus">Normal</p>
+                    </div>
+                    
+                </div>
+            </div>
+
+            <!-- Charts Grid -->
+            <div class="charts-grid">
+                <div class="chart-container">
+                    <h3>Temperature Forecast</h3>
+                    <canvas id="barChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Weather Conditions</h3>
+                    <canvas id="doughnutChart"></canvas>
+                </div>
+                <div class="chart-container">
+                    <h3>Temperature Trend</h3>
+                    <canvas id="lineChart"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
+    <script src="script.js"></script>
+    
+</body>
+</html>
